@@ -1,4 +1,4 @@
-FROM node
+FROM node:12
 
 WORKDIR /app
 
@@ -8,4 +8,4 @@ RUN npm install
 
 EXPOSE 80
 
-CMD [ "node", "server.js" ]
+CMD [ "node", "server.js" ] 
