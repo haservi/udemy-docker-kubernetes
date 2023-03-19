@@ -1,5 +1,5 @@
-const fs = require('fs').promises;
-const exists = require('fs').exists;
+const fs = require('fs');
+const exists = require('fs');
 const path = require('path');
 
 const express = require('express');
@@ -31,15 +31,13 @@ app.post('/create', async (req, res) => {
   const tempFilePath = path.join(__dirname, 'temp', adjTitle + '.txt');
   const finalFilePath = path.join(__dirname, 'feedback', adjTitle + '.txt');
 
-  await fs.writeFile(tempFilePath, content);
-  existsSync(finalFilePath, async (exists) => {
-    if (exists) {
-      res.redirect('/exists');
-    } else {
-      await fs.rename(tempFilePath, finalFilePath);
-      res.redirect('/');
-    }
-  });
+  await fs.promises.writeFile(tempFilePath, content);
+  if (fs.existsSync(finalFilePath)) {
+    res.redirect('/exists');
+  } else {
+    await fs.promises.rename(tempFilePath, finalFilePath);
+    res.redirect('/');
+  }
 });
 
 app.listen(80);
