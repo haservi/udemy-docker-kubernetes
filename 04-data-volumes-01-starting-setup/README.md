@@ -18,17 +18,34 @@ docker build -t feedback-node .
 - `-d` `detached mode로 도커 컨테이너를 백그라운드에서 실행
 - `--name` 컨테이너 이름 지정
 - `--rm` 피드백이 중지 시 자동으로 컨테이너 제거
+- `-v` 볼륨 지정 명명된 볼륨은 컨테이너가 제거하지 않음
 
 ``` bash
-docker run -p 3000:80 -d --name feedback-app --rm feed-back  
+docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback feedback-node
 ```
 
 ### 기타 명령어
 
-``` bash
-docker rm mycontainer
-```
+컨테이너 제거
 
 ``` bash
-docker rmi myimage
+docker rm [mycontainer]
+```
+
+이미지 제거
+
+``` bash
+docker rmi [myimage]
+```
+
+볼륨 확인
+
+``` bash
+docker volume ls 
+```
+
+볼륨 제거
+
+``` bash
+docker volume rm [volume name]
 ```
