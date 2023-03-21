@@ -24,6 +24,12 @@ docker build -t feedback-node .
 docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback feedback-node
 ```
 
+바인드 마운트 방법
+
+``` bash
+docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback -v $(pwd):/app -v /app/node_modules feedback-node
+```
+
 ### 기타 명령어
 
 컨테이너 제거
@@ -48,4 +54,11 @@ docker volume ls
 
 ``` bash
 docker volume rm [volume name]
+```
+
+### 바인드 마운트 단축키
+
+``` bash
+macOS/Linux: -v $(pwd):/app
+Windows: -v "%cd%":/app
 ```
