@@ -1,8 +1,6 @@
-# Docker Volumes Starting setup
+# Docker Volumes Added Nodemon
 
 ## 빌드 방법
-
-도커 파일 생성 후 아래와 같이 명령어 실행
 
 ### 이미지 생성
 
@@ -19,12 +17,6 @@ docker build -t feedback-node .
 - `--name` 컨테이너 이름 지정
 - `--rm` 피드백이 중지 시 자동으로 컨테이너 제거
 - `-v` 볼륨 지정 명명된 볼륨은 컨테이너가 제거하지 않음
-
-``` bash
-docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback feedback-node
-```
-
-바인드 마운트 방법
 
 ``` bash
 docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback -v $(pwd):/app -v /app/node_modules feedback-node
