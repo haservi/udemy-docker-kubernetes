@@ -1,4 +1,4 @@
-# Docker Volumes Adjusted Dokcerfile
+# Docker Volumes Added Dockerignore
 
 ## 빌드 방법
 
@@ -20,5 +20,5 @@ docker build -t feedback-node .
 - `:ro` 읽기 전용
 
 ``` bash
-docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback -v "$(pwd):/app:ro" -v /app/temp feedback-node
+docker run -d --rm -p 3000:8000 --env-file ./.env --name feedback-app -v feedback:/app/feedback -v "$(pwd):/app:ro" -v /app/node_modules -v /app/temp feedback-node 
 ```

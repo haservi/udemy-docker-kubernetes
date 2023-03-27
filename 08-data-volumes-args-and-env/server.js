@@ -1,4 +1,5 @@
-const fs = require('fs');
+const fs = require('fs').promises;
+const exists = require('fs').exists;
 const path = require('path');
 
 const express = require('express');
@@ -32,14 +33,16 @@ app.post('/create', async (req, res) => {
 
   console.log('TEST!!!!!');
 
-  await fs.promises.writeFile(tempFilePath, content);
-  if (fs.existsSync(finalFilePath)) {
-    res.redirect('/exists');
-  } else {
-    await fs.promises.copyFile(tempFilePath, finalFilePath);
-    await fs.promises.unlink(tempFilePath);
-    res.redirect('/');
-  }
+  await fs.writeFile(tempFilePath, content);
+  exists(finalFilePath, async (exists) => {
+    if (exists) {
+      res.redirect('/exists');
+    } else {
+      await fs.copyFile(tempFilePath, finalFilePath);
+      await fs.unlink(tempFilePath);
+      res.redirect('/');
+    }
+  });
 });
 
 app.listen(process.env.PORT);
