@@ -12,8 +12,23 @@ docker run mongo
 docker run -d --name mongodb mongo  
 ```
 
+동일한 네트워크로 실행하는 방법
+
 ``` bash
-docker build -t feedback-node .
+# mongo 설치
+docker run mongo
+
+# 이미지 빌드
+docker build -t favorites-node .
+
+# 네트워크 생성
+docker network create favorites-net
+
+# 네트워크를 지정한 mongo 컨테이너 실행
+docker run -d --name mongodb --network favorites-net mongo
+
+# 네트워클 지정한 이미지 컨테이너 실행
+docker run --name favorites --network favorites-net  -d --rm -p 3000:3000 favorites-node
 ```
 
 ### 컨테이너 실행
@@ -35,6 +50,10 @@ docker run --name favorites -d --rm -p 3000:3000
 
 ``` bash
 localhost:port -> host.docker.internal:port
+```
 
+도커에 존재하는 네트워크 확인
 
+``` bash
+docker network ls
 ```
