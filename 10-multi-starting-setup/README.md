@@ -10,9 +10,14 @@ docker network create goals-net
 
 ### DB
 
+data: data db 볼륨 추가
+-e: 환경변수 추가
+MONGO_INITDB_ROOT_USERNAME=max
+MONGO_INITDB_ROOT_PASSWORD=secret
+
 ``` bash
 docker run mongo
-docker run --name mongodb --rm -d --network goals-net mongo
+docker run --name mongodb -v data:/data/db --rm -d --network goals-net mongo
 ```
 
 ### Backend
