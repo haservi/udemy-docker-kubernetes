@@ -83,19 +83,17 @@ app.delete('/goals/:id', async (req, res) => {
   }
 });
 
-mongoose.connect(
-  'mongodb://mongodb:27017/course-goals',
-  {
+// `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@mongodb:27017/course-goals?authSource=admin`,
+mongoose
+  .connect(`mongodb://mongodb:27017/course-goals`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  },
-  (err) => {
-    if (err) {
-      console.error('FAILED TO CONNECT TO MONGODB');
-      console.error(err);
-    } else {
-      console.log('CONNECTED TO MONGODB');
-      app.listen(80);
-    }
-  }
-);
+    authSource: 'admin',
+  })
+  .then(() => {
+    console.log('MongoDB Connected!!');
+    app.listen(80);
+  })
+  .catch((error) => {
+    console.log('MongoDB Connection Error: ', error);
+  });

@@ -12,19 +12,26 @@ docker network create goals-net
 
 data: data db 볼륨 추가
 -e: 환경변수 추가
-MONGO_INITDB_ROOT_USERNAME=max
+MONGO_INITDB_ROOT_USERNAME=root
 MONGO_INITDB_ROOT_PASSWORD=secret
 
 ``` bash
 docker run mongo
-docker run --name mongodb -v data:/data/db --rm -d --network goals-net mongo
+docker run --name mongodb -v data:/data/db -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password --rm -d --network goals-net mongo
+
+docker pull mongo:3.6
+docker run --name mongodb -v data:/data/db --rm -d --network goals-net mongo:3.6
+
 ```
 
 ### Backend
 
+- -v: log 볼륨 추가
+- $(pwd): 해당 코드의 위치(mac)
+
 ``` bash
 docker build -t goals-node .
-docker run --name goals-backend --rm -d --network goals-net -p 80:80 goals-node
+docker run --name goals-backend --rm -d -v $(pwd):/app -v logs:/app/logs -v /app/node_modules --network goals-net -p 80:80 goals-node
 ```
 
 backend/app.js 의 이름이 mongodb 컨테이너와 같아야 한다.
