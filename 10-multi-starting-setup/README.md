@@ -38,9 +38,16 @@ backend/app.js 의 이름이 mongodb 컨테이너와 같아야 한다.
 
 ### Frontend
 
+자신의 폴더 경로 찾기
+
+- macOS/Linux: -v $(pwd):/app
+- Windows: -v "%cd%":/app
+
+해당 폴더 위치에서 해야함
+
 ``` bash
 docker build -t goals-react .
-docker run --name goals-frontend --rm -d -p 3000:3000 goals-react
+docker run --name goals-frontend -v $(pwd)/src:/app/src --rm -d -p 3000:3000 goals-react
 ```
 
 프론트엔드의 경우 --network가 의미가 없다. 애초에 브라우저를 통해 연결되기 때문에
@@ -50,3 +57,5 @@ docker run --name goals-frontend --rm -d -p 3000:3000 goals-react
 ``` docker
 docker ps pru
 ```
+
+`.dockerignore`를 정하여 docker image를 만들때 필요없는 파일은 제외하는게 좋다.

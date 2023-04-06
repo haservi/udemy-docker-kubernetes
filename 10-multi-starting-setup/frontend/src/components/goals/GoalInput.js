@@ -24,13 +24,13 @@ function GoalInput(props) {
   }
 
   return (
-    <section id='goal-input'>
+    <section id="goal-input">
       <Card>
         <form onSubmit={goalSubmitHandler}>
-          <label htmlFor='text'>New Goal</label>
+          <label htmlFor="text">New Goal!!</label>
           <input
-            type='text'
-            id='text'
+            type="text"
+            id="text"
             value={enteredGoalText}
             onChange={updateGoalTextHandler}
           />
