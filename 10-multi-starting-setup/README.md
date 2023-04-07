@@ -12,16 +12,20 @@ docker network create goals-net
 
 data: data db 볼륨 추가
 -e: 환경변수 추가
-MONGO_INITDB_ROOT_USERNAME=root
-MONGO_INITDB_ROOT_PASSWORD=secret
+-e MONGO_INITDB_ROOT_USERNAME=admin
+-e MONGO_INITDB_ROOT_PASSWORD=password
 
 ``` bash
 docker run mongo
-docker run --name mongodb -v data:/data/db -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password --rm -d --network goals-net mongo
+docker run --name mongodb \
+ -v data:/data/db \
+ --rm \
+ -d \
+ --network goals-net \
+ mongo
 
 docker pull mongo:3.6
 docker run --name mongodb -v data:/data/db --rm -d --network goals-net mongo:3.6
-
 ```
 
 ### Backend
@@ -31,7 +35,15 @@ docker run --name mongodb -v data:/data/db --rm -d --network goals-net mongo:3.6
 
 ``` bash
 docker build -t goals-node .
-docker run --name goals-backend --rm -d -v $(pwd):/app -v logs:/app/logs -v /app/node_modules --network goals-net -p 80:80 goals-node
+docker run --name goals-backend \
+ --rm \ 
+ -d \
+ -v $(pwd):/app \
+ -v logs:/app/logs \
+ -v /app/node_modules \
+ --network goals-net \
+ -p 80:80 \
+ goals-node
 ```
 
 backend/app.js 의 이름이 mongodb 컨테이너와 같아야 한다.
@@ -42,12 +54,20 @@ backend/app.js 의 이름이 mongodb 컨테이너와 같아야 한다.
 
 - macOS/Linux: -v $(pwd):/app
 - Windows: -v "%cd%":/app
+- -it: 도커 컨테이너를 대화형(interactive) 모드로 실행
 
 해당 폴더 위치에서 해야함
 
 ``` bash
 docker build -t goals-react .
-docker run --name goals-frontend -v $(pwd)/src:/app/src --rm -d -p 3000:3000 goals-react
+docker run \
+ --name goals-frontend \
+ -v $(pwd)/src:/app/src \
+ --rm \
+ -d \
+ -it \
+ -p 3000:3000 \
+ goals-react
 ```
 
 프론트엔드의 경우 --network가 의미가 없다. 애초에 브라우저를 통해 연결되기 때문에
