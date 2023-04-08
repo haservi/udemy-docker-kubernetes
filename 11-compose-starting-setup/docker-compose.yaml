@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: admin
+    #   MONGO_INITDB_ROOT_PASSWORD: secret
+    # env_file:
+    #   - ./env/mongo.env
+    # 도커 컴포즈를 사용하는 경우 네트워크를 지정할 필요 없음 자동으로 동일한 네트워크 지정
+  # backend:
+  #   image: ''
+  # frontend:
+  #   image: 'b'
+
+volumes:
+  data:
+

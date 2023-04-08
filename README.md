@@ -5,6 +5,24 @@
 학습 시작일: 2023년 1월 15일  
 학습 종료일:
 
+## Docker Compose
+
+도커 컴포즈 실행
+
+- -d: detached 모드
+
+``` bash
+docker-compose up -d
+```
+
+도커 컴포즈 종료
+
+- -v: 볼륨과 함께 제거
+
+``` bash
+docker-compose down -v
+```
+
 ## 도커 명령어 관련 정보
 
 - `-p` 3000번 외부 포트 80번 내부포트
@@ -18,6 +36,14 @@
 
 ``` bash
 localhost:port -> host.docker.internal:port
+```
+
+도커 컨테이너 및 이미지 한번에 제거
+
+``` bash
+docker container prune
+docker image prune
+docker volume prune
 ```
 
 ### 바인드 마운트 단축키
