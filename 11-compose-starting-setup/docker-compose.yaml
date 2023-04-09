@@ -2,19 +2,42 @@ version: "3.8"
 services:
   mongodb:
     image: 'mongo'
+    # container_name: mongodb # 컨테이너 이름 지정
     volumes:
       - data:/data/db
     # environment:
     #   MONGO_INITDB_ROOT_USERNAME: admin
     #   MONGO_INITDB_ROOT_PASSWORD: secret
-    # env_file:
-    #   - ./env/mongo.env
+    env_file:
+      - ./env/mongo.env
     # 도커 컴포즈를 사용하는 경우 네트워크를 지정할 필요 없음 자동으로 동일한 네트워크 지정
-  # backend:
-  #   image: ''
-  # frontend:
+  backend:
+    build:  ./backend
+    # build:
+    #   context: ./backend
+    #   dockerfile: Dockerfile
+    ports:
+      - '80:80' # host port:container port
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    env_file:
+      - ./env/backend.env
+    depends_on:
+      - mongodb
+  frontend:
+    build: ./frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend/src:/app/src
+    stdin_open: true # -it 인터랙티브모드
+    tty: true # -it 인터랙티브모드
+    depends_on:
+      - backend
   #   image: 'b'
 
 volumes:
   data:
-
+  logs:

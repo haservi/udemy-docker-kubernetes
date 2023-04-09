@@ -10,6 +10,7 @@
 도커 컴포즈 실행
 
 - -d: detached 모드
+- up --build: 이미지를 리빌드
 
 ``` bash
 docker-compose up -d
