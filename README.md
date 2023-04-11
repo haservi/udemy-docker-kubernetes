@@ -26,7 +26,7 @@ docker-compose down -v
 
 ## 도커 명령어 관련 정보
 
-- `-p` 3000번 외부 포트 80번 내부포트
+- `-p` 포트 설정 ex) 3000:80 -> host port:container port
 - `-d` `detached mode로 도커 컨테이너를 백그라운드에서 실행
 - `--name` 컨테이너 이름 지정
 - `--rm` 피드백이 중지 시 자동으로 컨테이너 제거
