@@ -14,3 +14,12 @@ docker build -t node-util .
 docker run -it -v $(pwd):/app node-util init
 docker run -it -v $(pwd):/app node-util install express --save
 ```
+
+## Docker Compose를 이용해 설치
+
+아래와 같은 방법은 docker-compose를 이용해서 환경을 유틸리티 환경을 구축할 수도 있다.
+
+``` bash
+docker-compose run --rm npm init 
+docker-compose run --rm npm install express --save
+```
