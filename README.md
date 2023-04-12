@@ -43,7 +43,8 @@ localhost:port -> host.docker.internal:port
 
 ``` bash
 docker container prune
-docker image prune
+docker image prune # 이게 안되면 아래거로
+docker rmi $(docker images -a -q)
 docker volume prune
 ```
 
