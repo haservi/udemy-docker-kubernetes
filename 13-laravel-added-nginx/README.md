@@ -26,6 +26,14 @@ docker-compose up -d server php mysql
 docker-compose up -d --build server
 ```
 
+``` bash
+docker-compose run --rm artisan migrate
+```
+
+해당 사항 오류 확인
+
+Parse error: syntax error, unexpected '|', expecting variable (T_VARIABLE) in /var/www/html/vendor/nunomaduro/termwind/src/Functions.php on line 17
+
 ### 기타 설정
 
 src/.env 설정 변경
