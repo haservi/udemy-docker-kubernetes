@@ -30,9 +30,17 @@ docker-compose up -d --build server
 docker-compose run --rm artisan migrate
 ```
 
-해당 사항 오류 확인
+### 빌드 오류 관련 정리
 
 Parse error: syntax error, unexpected '|', expecting variable (T_VARIABLE) in /var/www/html/vendor/nunomaduro/termwind/src/Functions.php on line 17
+
+--> 아래와 같이 Php 버전을 변경하고 다시 src를 만들면 됨
+
+``` bash
+# FROM php:7.4-apache
+FROM php:8.0-fpm-alpine # php docker 파일 수정
+docker-compose run --rm composer create-project laravel/laravel:8.0.0 . # 해당 명령어로 다시 실행
+```
 
 ### 기타 설정
 
@@ -46,3 +54,4 @@ DB_DATABASE=homestead
 DB_USERNAME=homestead
 DB_PASSWORD=secret
 ```
+
