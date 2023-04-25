@@ -59,3 +59,28 @@ Windows: -v "%cd%":/app
 
 AWS는 Amazon Web Services의 약어로, 아마존닷컴이 제공하는 클라우드 컴퓨팅 서비스 플랫폼입니다. AWS는 컴퓨팅, 스토리지, 데이터베이스, 분석, 인공지능, IoT 및 기타 다양한 서비스를 제공하여 기업이나 개인이 필요로 하는 IT 인프라를 클라우드 기반으로 구축하고 관리할 수 있도록 도와줍니다. 아래 링크는 AWS에 대한 강사분의 영상 설명 링크입니다.  
 [AWS에 대한 유튜브 영상 링크](https://academind.com/tutorials/aws-the-basics)
+
+### 도커 이미지 공식홈페이지 등록/업데이트/가져오기
+
+도커 이미지 등록
+
+``` bash
+docker login # 로그인
+docker build -t node-dep-example . # 이미지 생성
+docker tag node-dep-example haservi/node-dep-example # 태그 지정
+docker push haservi/node-dep-example # 푸시
+```
+
+도커 이미지 업데이트 방법
+
+``` bash
+docker build -t node-dep-example . # 동일한 태그로 등록
+docker tag node-dep-example haservi/node-dep-example:0.1 # 버전 명시
+docker push haservi/node-dep-example:0.1 # 푸시
+```
+
+도커 이미지 가져오기
+
+``` bash
+docker pull haservi/node-dep-example:0.1
+```
