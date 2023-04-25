@@ -54,3 +54,8 @@ docker volume prune
 macOS/Linux: -v $(pwd):/app
 Windows: -v "%cd%":/app
 ```
+
+### AWS에 대해
+
+AWS는 Amazon Web Services의 약어로, 아마존닷컴이 제공하는 클라우드 컴퓨팅 서비스 플랫폼입니다. AWS는 컴퓨팅, 스토리지, 데이터베이스, 분석, 인공지능, IoT 및 기타 다양한 서비스를 제공하여 기업이나 개인이 필요로 하는 IT 인프라를 클라우드 기반으로 구축하고 관리할 수 있도록 도와줍니다. 아래 링크는 AWS에 대한 강사분의 영상 설명 링크입니다.  
+[AWS에 대한 유튜브 영상 링크](https://academind.com/tutorials/aws-the-basics)

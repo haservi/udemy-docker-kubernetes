@@ -23,6 +23,7 @@ sudo yum update -y # 리모트 머신 설치
 sudo amazon-linux-extras install docker # 아마존 도커 설치
 sudo service docker start # 도커 시작
 docker run  # 도커 실행
+sudo docker run -d --rm -p 80:80 haservi/node-dep-example
 ```
 
 ### 도커 이미지 공식홈페이지 푸시
