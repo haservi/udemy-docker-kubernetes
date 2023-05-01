@@ -84,3 +84,10 @@ docker push haservi/node-dep-example:0.1 # 푸시
 ``` bash
 docker pull haservi/node-dep-example:0.1
 ```
+
+팁으로 도커 이미지의 변화없이 같으면 이미지의 이름은 다르지만 이미지ID가 같아서 삭제가 안되는 경우가 있다.
+이럴 때는 아래와 같이 태그를 명시해서 제거할 수 있다.
+
+``` bash
+docker rmi [이미지이름:tag]
+```
