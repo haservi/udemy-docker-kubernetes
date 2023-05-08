@@ -1,4 +1,4 @@
-# 파이썬 파일 실행
+# 03-python-app-starting-setup
 
 간단한 유틸리티 실행
 

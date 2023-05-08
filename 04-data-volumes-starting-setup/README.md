@@ -1,10 +1,8 @@
-# Docker Volumes Starting setup
-
-## 빌드 방법
+# 04-data-volumes-starting-setup
 
 도커 파일 생성 후 아래와 같이 명령어 실행
 
-### 이미지 생성
+## 이미지 생성
 
 - `-t`는 태그를 달기 위한 명령어
 
