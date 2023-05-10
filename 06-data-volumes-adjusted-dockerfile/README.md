@@ -1,4 +1,4 @@
-# Docker Volumes Adjusted Dokcerfile
+# 06-data-volumes-adjusted-dockerfile
 
 ## 빌드 방법
 

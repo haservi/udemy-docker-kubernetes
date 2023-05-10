@@ -148,6 +148,7 @@ docker build -t feedback-node .
 - `--name` 컨테이너 이름 지정
 - `--rm` 피드백이 중지 시 자동으로 컨테이너 제거
 - `-v` 볼륨 지정 명명된 볼륨은 컨테이너가 제거하지 않음
+- `:ro` 읽기 전용
 
 ``` bash
 docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback feedback-node
