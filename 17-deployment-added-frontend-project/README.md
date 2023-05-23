@@ -7,8 +7,12 @@ Docker CMD에서 `CMD [ "npm", "start" ]`값은 기본적으로 package.json의 
 
 멀티스테이지 빌드로 하나의 도커파일에 여러 이미지를 빌드할 수 있다.
 
--f: 도커 파일명을 지정할 수 있음
+-f: 특정 도커 파일을 지정할 수 있음
 
 ``` bash
 docker build -f frontend/Dockerfile.prod ./frontend
+```
+
+``` bash
+docker build --target -build -f frontend/Dokcerfile.prod ./frontend
 ```
