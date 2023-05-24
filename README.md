@@ -202,3 +202,35 @@ docker build -t feedback-node .
 ``` bash
 docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback -v $(pwd):/app -v /app/node_modules feedback-node
 ```
+
+## 쿠버네티스
+
+쿠버네티스에서 사용자가 유의해야 할 것은 클러스터와 노드 생성이다.
+
+mac apple arm 기준 설치
+
+``` bash
+brew install kubectl
+```
+
+[VitureBox](https://www.virtualbox.org/wiki/Downloads) 설치 후 minikube 설치
+
+``` bash
+brew install minikube
+minikube start --driver=virtualbox # 이게 안되면
+minikube start --driver=virtualbox # 이거..
+````
+
+설치 확인
+
+``` bash
+minikube status
+```
+
+![image01](./images/image01.png)
+
+대시보드 확인
+
+``` bash
+minikube dashboard
+```
