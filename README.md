@@ -218,7 +218,7 @@ brew install kubectl
 ``` bash
 brew install minikube
 minikube start --driver=virtualbox # 이게 안되면
-minikube start --driver=virtualbox # 이거..
+minikube start --driver=docker # 이거
 ````
 
 설치 확인
@@ -234,3 +234,8 @@ minikube status
 ``` bash
 minikube dashboard
 ```
+
+쿠버네티스의 주요 개념 중 하나는 파드(Pod)이다.  
+파드는 쿠버네티스에서 실행되는 가장 작은 배포 단위이다.  
+
+일반적으로 파드는 하나 이상의 컨테이너로 구성되며, 이 컨테이너들은 동일한 호스트에서 동작하고 동일한 네트워크 네임스페이스와 IP 주소를 공유한다.
