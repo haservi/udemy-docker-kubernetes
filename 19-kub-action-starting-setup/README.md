@@ -27,7 +27,8 @@ ClusterIP: 기본값으로, 내부 클러스터 IP 주소를 할당하여 서비
 
 NodePort: 서비스를 클러스터 내부 IP 주소와 함께 노드의 특정 포트로 노출하며, 노드의 IP 주소와 노출된 포트를 조합하여 액세스할 수 있다.
 
-LoadBalancer: 클라우드 프로바이더의 로드 밸런서를 사용하여 서비스를 외부로 노출한다. 로드 밸런서는 서비스에 대한 외부 IP 주소를 할당하고 트래픽을 서비스의 백엔드 파드로 분산시킬 수 있다. 이 유형은 클라우드 프로바이더에서 로드 밸런서를 지원하는 경우에만 사용할 수 있습니다.
+LoadBalancer: 클라우드 프로바이더의 로드 밸런서를 사용하여 서비스를 외부로 노출한다. 로드 밸런서는 서비스에 대한 외부 IP 주소를 할당하고 트래픽을 서비스의 백엔드 파드로 분산시킬 수 있다.  
+이 유형은 클라우드 프로바이더에서 로드 밸런서를 지원하는 경우에만 사용할 수 있다.
 
 ``` bash
 docker build -t kub-first-app # docker 이미지 생성
@@ -50,6 +51,23 @@ kubectl get services # 서비스가 실행됐는지 확인
 minikube service first-app # 쿠버네티스에 의해 생성한 pod 실행
 ```
 
-![image01](./images/image01.png)
+![image01](./images/19-image01.png)
 
-![image02](./images/image02.png)
+![image02](./images/19-image02.png)
+
+``` bash
+kubectl scale deployment/first-app --replicas=3 # n개의 pod 생성
+Kubectl get pods 
+```
+
+아래와 같이 pod를 스케일링 하여 여러개의 Pod를 만들 수 있다.
+
+![image03](./images/19-image03.png)
+
+## 쿠버네티스 이미지 업데이트
+
+``` bash
+docker build -t haservi/kub-first-app:2 . # 버전을 명시해야 자동으로 업데이트 함
+docker push haservi/kub-first-app:2
+kubectl set image deployment/first-app kub-first-app=haservi/kub-first-app:2 # 도커 허브에 등록된 이미지가 변경됨을 알림
+```
