@@ -4,10 +4,14 @@
 
 minikube 동작 확인
 
--f: 
+-f: 생성한 yaml 파일 실행
 
 ``` bash
 kubectl apply -f=deployment.yaml # 선언한 파일 실행
+kubectl apply -f service.yaml # service 실행
+minikube service backend # service 배포
+
 kubectl get deployments
 Kubectl get pods
+Kubectl get services
 ```

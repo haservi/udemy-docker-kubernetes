@@ -1,14 +1,13 @@
 apiVersion: v1
-kind: Deployment 
+kind: Service 
 metadata:
-  name: second-app-deployment
+  name: backend # service 이름
 spec:
-  replicas: 1
-  template:
   selector: 
-    app: second-app
+    app: second-app # second-app이 있는 service는 모두 제어 가능
+    # tier: backend
   ports:
-    - protocol: 'TCP'
+    - protocol: 'TCP' # 기본 TCP
       port: 80
       targetPort: 8080
     # - protocol: 'TCP'
