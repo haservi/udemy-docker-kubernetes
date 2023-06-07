@@ -71,3 +71,19 @@ docker build -t haservi/kub-first-app:2 . # 버전을 명시해야 자동으로 
 docker push haservi/kub-first-app:2
 kubectl set image deployment/first-app kub-first-app=haservi/kub-first-app:2 # 도커 허브에 등록된 이미지가 변경됨을 알림
 ```
+
+이전으로 돌아가기
+
+``` bash
+kubectl rollout undo deployment/first-app # 바로 뒤로
+kubectl rollout undo deployment/first-app --to-revision=1 # 특정 revision 으로 이동
+kubectl rollout status deployment/first-app # 현재 상태
+kubectl rollout history deployment/first-app # 히스토리 보기
+```
+
+삭제
+
+``` bash
+kubectl delete service first-app # 서비스 제거
+kubebtl delete deployment first-app # 배포 제거
+```
