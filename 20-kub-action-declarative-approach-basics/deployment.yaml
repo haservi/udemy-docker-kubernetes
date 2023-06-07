@@ -6,16 +6,16 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: second-app
+      app: second-app # 제어되어야 하는 Pod와 매칭 시켜야 함
       tier: backend
   template:
     metadata: 
       labels:
-        app: second-app
+        app: second-app # 여러개의 label을 가질 수 있음
         tier: backend
     spec: 
       containers:
         - name: second-node
-          image: academind/kub-first-app:2
-        # - name: ...
+          image: haservi/kub-first-app:2
+        # - name: ... 여러 컨테이너를 선언할 수 있음
         #   image: ...
