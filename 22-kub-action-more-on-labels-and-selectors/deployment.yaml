@@ -11,7 +11,7 @@ spec:
       app: second-app
       tier: backend
     # matchExpressions: 
-    #   - {key: app, operator: NotIn, values: [second-app, first-app]}
+    #   - {key: app, operator: NotIn, values: [second-app, first-app]} # 위와 같이 표현식을 쓸 수 있다.
   template:
     metadata: 
       labels:
@@ -20,6 +20,6 @@ spec:
     spec: 
       containers:
         - name: second-node
-          image: academind/kub-first-app:2
+          image: haservi/kub-first-app:2
         # - name: ...
         #   image: ...

@@ -7,4 +7,5 @@
 ``` bash
 kubectl apply -f master-deployment.yaml # 선언적 파일 실행
 minikube service backend # 서비스 실행
+kubectl delete -f master-deployment.yaml # 선언된 리소스 삭제
 ```
