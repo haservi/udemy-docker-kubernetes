@@ -20,8 +20,8 @@ spec:
     spec: 
       containers:
         - name: second-node
-          image: academind/kub-first-app:2
-          imagePullPolicy: Always
+          image: haservi/kub-first-app:4
+          imagePullPolicy: Always # 이렇게 설정하거나 image에 :latest 를 지정
           livenessProbe: 
             httpGet:
               path: /
