@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
         - name: story
-          image: academind/kub-data-demo:1
-          volumeMounts:
+          image: haservi/kub-data-demo:1
+          volumeMounts: # volumes와 binding을 해줘야 함
             - mountPath: /app/story
               name: story-volume
-      volumes:
+      volumes: # 이렇게 지정하면 해당 컨테이너가 볼륨을 공유해서 쓸수 있음
         - name: story-volume
-          emptyDir: {}
+          emptyDir: {} # pod가 살아 있는 동안 해당 폴더를 유지 시켜줌
