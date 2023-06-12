@@ -9,4 +9,5 @@ kubectl apply -f=service.yaml -f=deployment.yaml
 mknikube service story-service
 ```
 
-위와 같이 설정하면 pod가 어떠한 문제로 재시작되면 볼륨이 사라짐
+위와 같이 설정하면 pod가 어떠한 문제로 재시작되면 볼륨이 사라지므로 어떠한 방법을  
+이용하여 볼륨 설정이 필요함
