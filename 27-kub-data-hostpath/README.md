@@ -1,16 +1,10 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: story-deployment
-spec: 
-  replicas: 2
-  selector:
-    matchLabels:
-      app: story
-  template:
-    metadata:
-      labels:
-        app: story
+# 27-kub-data-hostpath
+
+``` bash
+kubectl apply -f deployment.yaml
+```
+
+``` bash
     spec:
       containers:
         - name: story
@@ -23,3 +17,7 @@ spec:
           hostPath: # 노드에 종속적임
             path: /data # 여기에서 관리
             type: DirectoryOrCreate
+```
+
+위와 같이 설정을 하면 여러개의 Pods가 복제되도 하나의 저장소로 관리할 수 있다.  
+하지만 동일한 노드의 Pod에서만 데이터에 접근할 수 있는 단점도 있다.
