@@ -20,6 +20,8 @@ spec:
               name: story-volume
       volumes:
         - name: story-volume
-          hostPath: # 노드에 종속적임
-            path: /data # 여기에서 관리
-            type: DirectoryOrCreate
+          PersistentVolumeClaim: 
+            claimName: host-pvc
+          # hostPath: # 노드에 종속적임
+          #   path: /data # 여기에서 관리
+          #   type: DirectoryOrCreate

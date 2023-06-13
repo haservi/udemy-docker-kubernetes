@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: host-pv
+spec:
+  capacity:
+    storage: 2Gi
+  volumeMode: Filesystme # Filesystme, Block
+  accessModes:
+    - ReadWriteOnce # hostPath에서는 ReadOnlyMany, ReadWriteMany 사용할 수 없음
+  hostPath: # 호스트 패스이기에 노드와 독립적이지 않으며, 노드가 하나인 경우에만 정상 동작..!
+    path: /data
+    type: DirectoryOrCreate
