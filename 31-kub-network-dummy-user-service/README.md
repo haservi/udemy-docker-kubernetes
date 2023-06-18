@@ -17,3 +17,10 @@ minikube service users-service
     "password": "testers"
 }
 ```
+
+auth docker hub 생성
+
+``` bash
+docker build -t haservi/kub-demo-users .
+docker push haservi/kub-demo-users
+```
