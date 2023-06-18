@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: users
-          image: academind/kub-demo-users
+          image: haservi/kub-demo-users

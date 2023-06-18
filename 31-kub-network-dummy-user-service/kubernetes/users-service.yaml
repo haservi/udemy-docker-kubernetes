@@ -8,5 +8,5 @@ spec:
   type: LoadBalancer
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 8080 # 외부 port
+      targetPort: 8080 # 컨테이너 내부의 pod의 port
