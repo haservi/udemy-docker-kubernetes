@@ -14,9 +14,7 @@ spec:
     spec:
       containers:
         - name: users
-          image: haservi/kub-demo-users:latest
+          image: haservi/kub-demo-users:latest # latest를 넣으면 최신으로 가져옴
           env:
             - name: AUTH_ADDRESS
               value: localhost
-        - name: auth
-          image: haservi/kub-demo-auth:latest # latest를 넣으면 최신으로 가져옴

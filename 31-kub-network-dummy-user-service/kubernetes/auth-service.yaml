@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service
+spec:
+  selector:
+    app: auth
+  type: ClusterIP # 외부에 노출이 되면 안되기에 ClusterIP로 설정
+  ports:
+    - protocol: TCP
+      port: 80 # 외부 port
+      targetPort: 80 # 컨테이너 내부의 pod의 port
