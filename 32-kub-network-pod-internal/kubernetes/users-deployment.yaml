@@ -14,9 +14,7 @@ spec:
     spec:
       containers:
         - name: users
-          image: academind/kub-demo-users:latest
+          image: haservi/kub-demo-users:latest
           env:
             - name: AUTH_ADDRESS
-              value: localhost
-        - name: auth
-          image: academind/kub-demo-auth:latest
+              value: "10.105.83.77"
