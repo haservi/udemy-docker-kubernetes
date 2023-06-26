@@ -14,8 +14,7 @@ spec:
     spec:
       containers:
         - name: users
-          image: academind/kub-demo-users:latest
+          image: haservi/kub-demo-users:latest
           env:
             - name: AUTH_ADDRESS
-              # value: "10.99.104.252"
-              value: "auth-service.default"
+              value: "auth-service.default" # 서비스이름 + 네임스페이스 이름
