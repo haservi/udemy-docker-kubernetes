@@ -9,7 +9,7 @@ function App() {
 
   const fetchTasks = useCallback(function () {
     // 우선 ip주소 하드코딩
-    fetch('http://127.0.0.1:64526/tasks', {
+    fetch('http://127.0.0.1:51744/tasks', {
       headers: {
         Authorization: 'Bearer abc',
       },
@@ -31,7 +31,7 @@ function App() {
 
   function addTaskHandler(task) {
     // 우선 ip주소 하드코딩
-    fetch('http://127.0.0.1:64526/tasks', {
+    fetch('http://127.0.0.1:51744/tasks', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
