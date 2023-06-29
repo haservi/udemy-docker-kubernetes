@@ -8,10 +8,11 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = useCallback(function () {
-    fetch('http://192.168.99.100:32140/tasks', {
+    // 우선 ip주소 하드코딩
+    fetch('http://127.0.0.1:64526/tasks', {
       headers: {
-        'Authorization': 'Bearer abc'
-      }
+        Authorization: 'Bearer abc',
+      },
     })
       .then(function (response) {
         return response.json();
@@ -29,7 +30,8 @@ function App() {
   );
 
   function addTaskHandler(task) {
-    fetch('http://192.168.99.100:32140/tasks', {
+    // 우선 ip주소 하드코딩
+    fetch('http://127.0.0.1:64526/tasks', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +49,7 @@ function App() {
   }
 
   return (
-    <div className='App'>
+    <div className="App">
       <section>
         <NewTask onAddTask={addTaskHandler} />
       </section>
