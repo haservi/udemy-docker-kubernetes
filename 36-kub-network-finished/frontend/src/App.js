@@ -4,14 +4,15 @@ import './App.css';
 import TaskList from './components/TaskList';
 import NewTask from './components/NewTask';
 
+// test
 function App() {
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = useCallback(function () {
     fetch('/api/tasks', {
       headers: {
-        'Authorization': 'Bearer abc'
-      }
+        Authorization: 'Bearer abc',
+      },
     })
       .then(function (response) {
         return response.json();
@@ -29,6 +30,7 @@ function App() {
   );
 
   function addTaskHandler(task) {
+    // nginx.conf 로 연결
     fetch('/api/tasks', {
       method: 'POST',
       headers: {
@@ -47,7 +49,7 @@ function App() {
   }
 
   return (
-    <div className='App'>
+    <div className="App">
       <section>
         <NewTask onAddTask={addTaskHandler} />
       </section>
