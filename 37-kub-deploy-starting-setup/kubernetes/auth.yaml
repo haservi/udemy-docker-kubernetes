@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: auth
-  type: ClusterIP
+  type: ClusterIP # 내부적으로만 책임을 짐
   ports:
     - protocol: TCP
       port: 3000
@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: auth-api
-          image: academind/kub-dep-auth:latest
+          image: haservi/kub-dep-auth:latest
           env:
             - name: TOKEN_KEY
               value: 'shouldbeverysecure'
