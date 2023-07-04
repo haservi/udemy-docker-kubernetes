@@ -43,7 +43,7 @@ const getHashedPassword = async (req, res, next) => {
   const rawPassword = req.params.password;
   try {
     const hashedPassword = await createPasswordHash(rawPassword);
-    res.status(200).json({hashed: hashedPassword});
+    res.status(200).json({ hashed: hashedPassword });
   } catch (err) {
     next(err);
   }
