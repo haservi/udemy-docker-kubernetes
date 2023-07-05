@@ -35,7 +35,7 @@ const verifyUser = async (req, res, next) => {
     const error = createError('Could not authenticate user.', 401);
     return next(error);
   }
-
+  // 인증 API의 클러스터IP를 통해 받아온 정보를 저장
   req.userId = response.data.uid;
   next();
 };
